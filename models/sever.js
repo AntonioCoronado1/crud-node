@@ -7,6 +7,10 @@ class Server{
         this.port = process.env.PORT;
         this.usuariosPatch = '/api/usuarios';
         this.authPatch = '/api/auth';
+        this.inmueblesPatch = '/api/inmuebles';
+        this.oficinasPatch = '/api/oficinas';
+        this.clientesPatch = '/api/clientes';
+        this.visitasPatch = '/api/visitas';
         this.middlewares();
         this.routes();
         this.conectarDB();
@@ -25,6 +29,10 @@ class Server{
     routes(){
         this.app.use(this.authPatch,require('../routes/auth'));
         this.app.use( this.usuariosPatch,require('../routes/usuarios'));
+        this.app.use(this.inmueblesPatch,require('../routes/inmuebles'));
+        this.app.use(this.oficinasPatch,require('../routes/oficinas'));
+        this.app.use(this.clientesPatch,require('../routes/clientes'));
+        this.app.use(this.visitasPatch,require('../routes/visitas'));
         // this.app.get('/api', (req, res) =>{
         //     res.status(200).json({
         //         msg:'get api'
