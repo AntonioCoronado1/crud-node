@@ -18,7 +18,21 @@ const visitaPost= async(req, res = response) =>{
         res.json({
             visita
         });
+};
+const VisitasGetbyId = async(req = request, res = response) =>{
+    const { id } = req.params;
+    const query = {id_inmueble:id};
+    const[total, visitas] = await Promise.all([
+        Visita.countDocuments(query),
+        Visita.find(query)
+    ])
+    res.json({
+        total, 
+        visitas
+    });
 }
+
 module.exports ={
-    visitaPost
+    visitaPost,
+    VisitasGetbyId
 }

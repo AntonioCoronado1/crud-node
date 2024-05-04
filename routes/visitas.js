@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const {check} = require('express-validator');
 const {validarCampos} = require('../middlewares/validar-campos');
-const {visitaPost} = require('../controllers/visitas');
+const {visitaPost,VisitasGetbyId} = require('../controllers/visitas');
 
 
 const router = Router();
@@ -13,5 +13,5 @@ router.post('/',[
     check('comentarios', 'La superficie del inmueble es obligatoria').not().isEmpty(),
     validarCampos
 ],visitaPost);
-
+router.get('/:id',VisitasGetbyId);
 module.exports = router;

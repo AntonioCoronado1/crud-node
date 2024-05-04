@@ -16,6 +16,10 @@ const OficinaSchema = Schema({
     encargado:{
         type: String,
         required:[true, 'La direccion es obligatoria']
+    },zona_ciudad:{
+        type:String,
+        enum:['Centro','Norte','Sur','Oriente','Occidente'],
+        required:[true, 'La zona de la ciudad es obligatoria']
     }
 });
 

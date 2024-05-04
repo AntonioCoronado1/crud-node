@@ -10,6 +10,7 @@ router.post('/',[
     check('direccion','La direccion es obligatoria').not().isEmpty(), 
     check('telefono', 'El telefono es obligatorio').not().isEmpty(),
     check('encargado', 'Se requiere un encargado de oficina').not().isEmpty(),
+    check('zona_ciudad', 'Se requiere un encargado de oficina').not().isEmpty(),
     validarCampos
 ],oficinasPost);
 router.put('/:id',[

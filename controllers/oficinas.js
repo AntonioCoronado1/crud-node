@@ -2,8 +2,8 @@ const { response, request } = require('express');
 const Oficina = require('../models/oficina');
 
 const oficinasPost = async(req, res = response) => {
-    const { sede, direccion, telefono,encargado}=req.body;
-    const oficina = new Oficina({sede, direccion, telefono,encargado});
+    const { sede, direccion, telefono,encargado,zona_ciudad}=req.body;
+    const oficina = new Oficina({sede, direccion, telefono,encargado,zona_ciudad});
     await oficina.save();
     res.json({
         oficina

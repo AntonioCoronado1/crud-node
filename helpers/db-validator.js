@@ -2,6 +2,8 @@ const Role = require('../models/role');
 const Usuario = require('../models/usuario');
 const Cliente = require('../models/cliente');
 const Oficina = require('../models/oficina');
+const Inmueble = require('../models/inmueble');
+const Estado = require('../models/estado');
 
 const esRoleValido = async(rol = "") =>{
     const existeRol = await Role.findOne({rol});
@@ -34,10 +36,31 @@ const existeOficinaPorId = async( id ) =>{
         throw new Error(`El Id no existe ${ id }`);
     }
 }
+const esEstadoValido = async(estado = "") =>{
+    const existeEstado = Estado.findOne({estado});
+    if(!existeEstado){
+        throw new Error(`El estado no es valido del inmueble no es valido`)
+    }
+}
+const PrecioalquiValido = async( estado = '' ) => {
+    const existeEstado = Estado.findOne({estado});
+    if(existeEstado!=="ALQUILER"){
+        throw new Error(`El estado no es valido del inmueble no es valiso`)
+    }
+}
+const PrecioventaValido = async( estado = '' ) => {
+    const existeEstado = Estado.findOne({estado});
+    if(existeEstado!=="VENTA"){
+        throw new Error(`El estado no es valido del inmueble no es valiso`)
+    }
+}
 module.exports = {
     esRoleValido,
     emailExiste,
     existeUsuarioPorId,
     existeClientePorId,
-    existeOficinaPorId
+    existeOficinaPorId,
+    esEstadoValido,
+    PrecioalquiValido,
+    PrecioventaValido
 }
