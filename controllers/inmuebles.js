@@ -5,11 +5,11 @@ const inmueblePost = async(req, res = response) =>{
     const { descripcion, direccion, superficie, tipo,
         estado,tamaño,urbanizacion,habitaciones,baños,cocinas,puerta_blindada,
         parqueadero,num_puertas,diafono,acondicionado,
-        precio,nom_propietario,tel_propietario,zona_ciudad} =req.body;
+        precio_alquiler,precio_venta,nom_propietario,tel_propietario,zona_ciudad} =req.body;
     const inmueble = new Inmueble({ descripcion, direccion, superficie, tipo,
         estado,tamaño,urbanizacion,habitaciones,baños,cocinas,puerta_blindada,
         parqueadero,num_puertas,diafono,acondicionado,
-        precio,nom_propietario,tel_propietario,zona_ciudad});
+        precio_alquiler,precio_venta,nom_propietario,tel_propietario,zona_ciudad});
         await inmueble.save();
         res.json({
             inmueble
