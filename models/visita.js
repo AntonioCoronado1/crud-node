@@ -1,16 +1,13 @@
 const { Schema, model } = require('mongoose');
 
 const VisitaSchema = Schema({
-    id_cliente:{
-        type: String,
-        required:[true, 'Se requiere de una descripcion']
-    },
+    
     nombre:{
         type: String,
         required:[true, 'Se requiere de una descripcion']
     },
-    id_inmueble:{
-        type: String,
+    referencia:{
+        type: Number,
         required:[true, 'Se requiere de una descripcion']
     },
     descripcion:{

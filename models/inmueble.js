@@ -2,7 +2,11 @@
 const { Schema, model } = require('mongoose');
 
 const InmuebleSchema = Schema({
-    descripcion:{
+    referencia:{
+        type: Number,
+        required:[true, 'La referencia es obligatoria'],
+        unique: true
+    },descripcion:{
         type: String,
         required:[true, 'Se requiere de una descripcion']
     },direccion:{
@@ -17,13 +21,13 @@ const InmuebleSchema = Schema({
         type:String,
         required:true,
         enum:['PISO NUEVO','PISO DE OCASION','VILLA','CASA','LOCAL']
-    },tamaño:{
+    },tamano:{
         type:Number
     },urbanizacion:{
         type: String,
     },habitaciones:{
         type:Number
-    },baños:{
+    },banios:{
         type:Number
     },cocinas:{
         type:Number

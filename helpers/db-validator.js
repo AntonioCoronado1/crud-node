@@ -17,6 +17,12 @@ const emailExiste = async( correo = '' ) => {
         throw new Error(`El correo: ${ correo }, ya está registrado`);
     }
 }
+const referenciaexiste = async( referencia = 0 ) => {
+    const existeref = await Inmueble.findOne({ referencia });
+    if ( existeref ) {
+        throw new Error(`La referencia: ${ referencia }, ya exite digite otra`);
+    }
+}
 
 const existeUsuarioPorId = async( id ) =>{
     const existeUsuario = await Usuario.findById(id);
@@ -62,5 +68,6 @@ module.exports = {
     existeOficinaPorId,
     esEstadoValido,
     PrecioalquiValido,
-    PrecioventaValido
+    PrecioventaValido,
+    referenciaexiste
 }

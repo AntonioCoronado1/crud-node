@@ -4,14 +4,12 @@ const Visita = require('../models/visita');
 const Cliente = require('../models/cliente');
 
 const visitaPost= async(req, res = response) =>{
-    const { id_cliente, id_inmueble, fecha, comentarios}=req.body;
-    const cliente = await Cliente.findById(id_cliente);
-    const nombre = cliente.nombre;
-    const inmueble = await Inmueble.findById(id_inmueble);
+    const { nombre, referencia, fecha, comentarios}=req.body;
+    const inmueble = await Inmueble.findOne({referencia:referencia});
     const descripcion = inmueble.descripcion;
 
     
-    const visita = new Visita({ id_cliente,nombre, id_inmueble, descripcion, fecha, comentarios});
+    const visita = new Visita({nombre, referencia, descripcion, fecha, comentarios});
     
      
     await visita.save();
@@ -20,17 +18,17 @@ const visitaPost= async(req, res = response) =>{
         });
 };
 const VisitasGetbyId = async(req = request, res = response) =>{
-    const { id } = req.params;
-    const query = {id_inmueble:id};
+    const { referencia } = req.params;
+    const query = {referencia:referencia};
     const[total, visitas] = await Promise.all([
         Visita.countDocuments(query),
         Visita.find(query)
     ])
-    res.json({
-        total, 
+    res.json(
         visitas
-    });
+    );
 }
+
 
 module.exports ={
     visitaPost,

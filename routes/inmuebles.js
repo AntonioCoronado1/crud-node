@@ -1,14 +1,17 @@
 const {Router} = require('express');
 const {check} = require('express-validator');
 const {validarCampos} = require('../middlewares/validar-campos');
-const {inmueblePost,inmuebleGet,inmuebleGetbyId} = require('../controllers/inmuebles');
+const {inmueblePost,inmuebleGet,inmuebleGetbyId,inmuebleGetAll} = require('../controllers/inmuebles');
 const {esEstadoValido,
        PrecioalquiValido,
-       PrecioventaValido} = require('../helpers/db-validator');
+       PrecioventaValido,
+       referenciaexiste} = require('../helpers/db-validator');
 
 const router = Router();
 
 router.post('/',[
+    check('referencia','Es necesario una referencia del inmueble').not().isEmpty() ,
+    check('referencia',).custom(referenciaexiste),
     check('descripcion','Es necesario una descripcion del inmueble').not().isEmpty() ,
     check('direccion','Es obligatorio tener una ubicación').not().isEmpty(), 
     check('superficie', 'La superficie del inmueble es obligatoria').not().isEmpty(),
@@ -21,7 +24,8 @@ router.post('/',[
     check('zona_ciudad', 'Se debe especificar la zona de la ciudad').not().isEmpty(),
     validarCampos
 ],inmueblePost);
-router.get('/',inmuebleGet);
-router.get('/:id',inmuebleGetbyId);
+router.get('/',inmuebleGetAll);
+router.get('/referencia/:referencia',inmuebleGetbyId);
+router.get('/estado/:estado',inmuebleGet);
 
 module.exports = router;

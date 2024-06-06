@@ -1,7 +1,7 @@
 const {Router} = require('express');
 const {check} = require('express-validator');
 const {validarCampos} = require('../middlewares/validar-campos');
-const {clientesPost,clientePut} = require('../controllers/clientes');
+const {clientesPost,clientePut,clienteGet} = require('../controllers/clientes');
 const {existeClientePorId} = require('../helpers/db-validator');
 const router = Router();
 
@@ -16,5 +16,6 @@ router.put('/:id',[
     check('id').custom( existeClientePorId ),
     validarCampos
 ], clientePut);
+router.get('/',clienteGet);
 
 module.exports = router;

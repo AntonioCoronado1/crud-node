@@ -16,9 +16,16 @@ const clientePut = async(req, res = response) => {
     const cliente = await Cliente.findByIdAndUpdate(id, resto);
     res.json(cliente);
 }
+const clienteGet = async(req = request, res = response) =>{
+    const clientes = await Cliente.find();
+    res.json(
+        clientes
+    );
+}
 
 module.exports ={
     clientesPost,
-    clientePut
+    clientePut,
+    clienteGet
 }
 

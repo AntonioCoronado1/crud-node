@@ -7,11 +7,11 @@ const {visitaPost,VisitasGetbyId} = require('../controllers/visitas');
 const router = Router();
 
 router.post('/',[
-    check('id_cliente','Es necesario una descripcion del inmueble').not().isEmpty() ,
-    check('id_inmueble','Es obligatorio tener una ubicación').not().isEmpty(), 
+    check('nombre','Es necesario una descripcion del inmueble').not().isEmpty() ,
+    check('referencia','Es obligatorio tener una ubicación').not().isEmpty(), 
     check('fecha', 'La superficie del inmueble es obligatoria').not().isEmpty(),
     check('comentarios', 'La superficie del inmueble es obligatoria').not().isEmpty(),
     validarCampos
 ],visitaPost);
-router.get('/:id',VisitasGetbyId);
+router.get('/:referencia',VisitasGetbyId);
 module.exports = router;
