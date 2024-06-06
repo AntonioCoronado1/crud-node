@@ -1,6 +1,9 @@
 const {Router} = require('express');
 const {check} = require('express-validator');
-const {validarCampos} = require('../middlewares/validar-campos');
+const {validarCampos,
+    validarJWT,
+    esAdminRole,
+    tieneRole} = require('../middlewares');
 const {inmueblePost,inmuebleGet,inmuebleGetbyId,inmuebleGetAll} = require('../controllers/inmuebles');
 const {esEstadoValido,
        PrecioalquiValido,
@@ -10,6 +13,8 @@ const {esEstadoValido,
 const router = Router();
 
 router.post('/',[
+    validarJWT,
+    tieneRole('ADMIN_ROLE','VENTAS_ROLE'),
     check('referencia','Es necesario una referencia del inmueble').not().isEmpty() ,
     check('referencia',).custom(referenciaexiste),
     check('descripcion','Es necesario una descripcion del inmueble').not().isEmpty() ,
