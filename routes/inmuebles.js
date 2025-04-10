@@ -5,6 +5,7 @@ const {validarCampos,
     esAdminRole,
     tieneRole} = require('../middlewares');
 const {inmueblePost,inmuebleGet,inmuebleGetbyId,inmuebleGetAll} = require('../controllers/inmuebles');
+const {VerInmuebles,VerInmueblesId,VerInmueblesEstado} = require('../controllers/facade');
 const {esEstadoValido,
        PrecioalquiValido,
        PrecioventaValido,
@@ -32,5 +33,8 @@ router.post('/',[
 router.get('/',inmuebleGetAll);
 router.get('/referencia/:referencia',inmuebleGetbyId);
 router.get('/estado/:estado',inmuebleGet);
+router.get('/facade',VerInmuebles);
+router.get('/facade/:referencia',VerInmueblesId);
+router.get('/facade/estado/:estado',VerInmueblesEstado);
 
 module.exports = router;

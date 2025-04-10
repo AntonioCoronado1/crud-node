@@ -37,7 +37,7 @@ const inmuebleGetAll = async(req = request, res = response)=>{
 
 const inmuebleGetbyId = async(req = request, res = response) =>{
     const { referencia } = req.params;
-    const query = {referencia:referencia};
+  const query = {referencia:referencia};
     const[total, inmuebles] = await Promise.all([
         Inmueble.countDocuments(query),
         Inmueble.find(query)
@@ -45,8 +45,7 @@ const inmuebleGetbyId = async(req = request, res = response) =>{
     res.json(
         inmuebles
     );
-}
-
+}  
 
 
 module.exports ={
