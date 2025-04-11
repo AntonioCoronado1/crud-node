@@ -15,6 +15,15 @@ const inmueblePost = async(req, res = response) =>{
             inmueble
         });
 }
+const inmueblePostSimple = async(req, res = response) =>{
+    
+    const inmueble = new Inmueble(req.body);
+        await inmueble.save();
+        res.json({
+            inmueble
+        });
+}
+
 const inmuebleGet = async(req = request, res = response) => {
     const { estado } = req.params;
     const query = {estado:estado};
@@ -50,6 +59,7 @@ const inmuebleGetbyId = async(req = request, res = response) =>{
 
 module.exports ={
     inmueblePost,
+    inmueblePostSimple,
     inmuebleGet,
     inmuebleGetbyId,
     inmuebleGetAll

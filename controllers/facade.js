@@ -2,6 +2,11 @@ const { response, request } = require('express');
 const Inmueble = require('../models/inmueble');
 
 const FacadeInmueble = {
+    async InmueblePost(datos){
+        const inmueble = new Inmueble(datos);
+        await inmueble.save();
+        return inmueble;
+    },
     async InmuebleGetAll(){
         return await Inmueble.find();
     },
@@ -17,6 +22,14 @@ const FacadeInmueble = {
                 Inmueble.find(query)
             ])
     }
+}
+
+const AgregarInmueble = async(req, res = response) =>{
+    
+    const inmueble = await FacadeInmueble.InmueblePost(req.body);
+        res.json({
+            inmueble
+        });
 }
 
 const VerInmuebles = async(req = request, res = response)=>{
@@ -44,6 +57,7 @@ const VerInmueblesEstado = async(req = request, res = response)=>{
     );
 }
 module.exports = {
+    AgregarInmueble,
     VerInmuebles,
     VerInmueblesId,
     VerInmueblesEstado
