@@ -116,7 +116,7 @@ class InmuebleDirector{
         .setEstado(data.estado)
         .setZona_ciudad(data.zona_ciudad)
         .setPrecios(data.precio_venta,data.precio_alquiler)
-        .setCasaDetalles({
+        .setApartamentoDetalles({
           habitaciones: data.habitaciones,
           banios: data.banios, 
           cocinas: data.cocinas, 
@@ -137,7 +137,7 @@ class InmuebleDirector{
         .setEstado(data.estado)
         .setZona_ciudad(data.zona_ciudad)
         .setPrecios(data.precio_venta, data.precio_alquiler)
-        .setCasaDetalles({
+        .setLocalDetalles({
           num_puertas: data.num_puertas,
           diafono: data.diafono, 
           acondicionado: data.acondicionado 

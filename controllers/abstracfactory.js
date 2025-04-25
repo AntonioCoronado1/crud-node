@@ -28,7 +28,7 @@ class Casa extends InmuebleInterface{
         tipo: 'CASA',
         estado: this.data.estado,
         precio_venta: this.data.precio_venta,
-        precio_renta: this.data.precio_renta,
+        precio_alquiler: this.data.precio_alquiler,
         zona_ciudad: this.data.zona_ciudad,
         nom_propietario: this.data.nom_propietario,
         tel_propietario: this.data.tel_propietario,
@@ -55,7 +55,7 @@ class Apartamento extends InmuebleInterface{
         tipo: 'PISO NUEVO',
         estado: this.data.estado,
         precio_venta: this.data.precio_venta,
-        precio_renta: this.data.precio_renta,
+        precio_alquiler: this.data.precio_alquiler,
         zona_ciudad: this.data.zona_ciudad,
         nom_propietario: this.data.nom_propietario,
         tel_propietario: this.data.tel_propietario,
@@ -79,16 +79,16 @@ class Local extends InmuebleInterface{
         descripcion: this.data.descripcion,
         direccion: this.data.direccion,
         superficie: this.data.superficie,
-        tipo: 'CASA',
+        tipo: 'LOCAL',
         estado: this.data.estado,
         precio_venta: this.data.precio_venta,
-        precio_renta: this.data.precio_renta,
+        precio_alquiler: this.data.precio_alquiler,
         zona_ciudad: this.data.zona_ciudad,
         nom_propietario: this.data.nom_propietario,
         tel_propietario: this.data.tel_propietario,
         num_puertas: this.data.num_puertas,
         diafono: this.data.diafono,
-        parqueadero: this.data.parqueadero
+        acondicionado: this.data.acondicionado
         }
       }
 }
