@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const { dbConnection } = require('../database/config');
+const SingletondbConnection  = require('../database/singletonconfig');
 class Server{
     constructor(){
         this.app = express();
@@ -17,7 +18,8 @@ class Server{
     }
 
     async conectarDB(){
-        await dbConnection();
+         await SingletondbConnection.dbConnection(process.env.MONGODB_CNN);
+//       await dbConnection();
     }
 
     middlewares(){
